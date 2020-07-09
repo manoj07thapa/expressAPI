@@ -42,25 +42,38 @@ module.exports = {
 			email: Joi.string().email().required()
 		}),
 
-		carSchema: Joi.object().keys({
-			make: Joi.string().required(),
-			model: Joi.string().required(),
-			year: Joi.number().required()
-		}),
-
-		newCarSchema: Joi.object().keys({
-			seller: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-			make: Joi.string().required(),
-			model: Joi.string().required(),
-			year: Joi.number().required()
-		}),
-
 		/*  we use specific schema for patch because in patch we dont update all
 			request only particular field, hence required is ommited*/
 		userPatchSchema: Joi.object().keys({
 			firstName: Joi.string(),
 			lastName: Joi.string(),
 			email: Joi.string().email()
+		}),
+
+		userCarSchema: Joi.object().keys({
+			make: Joi.string().required(),
+			model: Joi.string().required(),
+			year: Joi.number().required()
+		}),
+
+		carSchema: Joi.object().keys({
+			seller: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+			make: Joi.string().required(),
+			model: Joi.string().required(),
+			year: Joi.number().required()
+		}),
+
+		/**this schema is used during put request of cars */
+		putCarSchema: Joi.object().keys({
+			make: Joi.string().required(),
+			model: Joi.string().required(),
+			year: Joi.number().required()
+		}),
+
+		patchCarSchema: Joi.object().keys({
+			make: Joi.string(),
+			model: Joi.string(),
+			year: Joi.number()
 		}),
 
 		idSchema: Joi.object().keys({

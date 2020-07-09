@@ -3,7 +3,7 @@ const Car = require('../models/car');
 
 module.exports = {
 	index: async (req, res, next) => {
-		const users = await User.find({});
+		const users = await User.find({}).populate('cars');
 
 		res.status(200).json(users);
 	},
